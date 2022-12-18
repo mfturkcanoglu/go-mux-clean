@@ -1,4 +1,4 @@
-module standart-lib-rest-api
+module github.com/mfturkcanoglu/go-mux-clean
 
 go 1.19
 

@@ -2,8 +2,9 @@ package repositories
 
 import (
 	"log"
-	"standart-lib-rest-api/database"
-	"standart-lib-rest-api/entities"
+
+	"github.com/mfturkcanoglu/go-mux-clean/database"
+	"github.com/mfturkcanoglu/go-mux-clean/entities"
 )
 
 type ProductRepository interface {

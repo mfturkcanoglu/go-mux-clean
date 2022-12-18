@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"standart-lib-rest-api/entities"
-	"standart-lib-rest-api/services"
+
+	"github.com/mfturkcanoglu/go-mux-clean/entities"
+	"github.com/mfturkcanoglu/go-mux-clean/services"
 
 	"github.com/gorilla/mux"
 )

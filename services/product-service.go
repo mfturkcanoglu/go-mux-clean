@@ -1,9 +1,10 @@
 package services
 
 import (
-	"standart-lib-rest-api/entities"
-	"standart-lib-rest-api/repositories"
 	"strconv"
+
+	"github.com/mfturkcanoglu/go-mux-clean/entities"
+	"github.com/mfturkcanoglu/go-mux-clean/repositories"
 
 	"github.com/go-playground/validator/v10"
 )

@@ -1,4 +1,4 @@
 {
     "port": ":8080",
-    "connection_string": "host=localhost user=postgres password=root dbname=crud-db"
+    "connection_string": "host=127.0.0.1 user=postgres password=root dbname=crud-db"
 }

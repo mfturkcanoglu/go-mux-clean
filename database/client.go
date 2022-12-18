@@ -2,7 +2,8 @@ package database
 
 import (
 	"log"
-	"standart-lib-rest-api/entities"
+
+	"github.com/mfturkcanoglu/go-mux-clean/entities"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

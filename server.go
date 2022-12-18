@@ -1,9 +1,9 @@
 package main
 
 import (
-	"standart-lib-rest-api/controllers"
-	"standart-lib-rest-api/database"
-	router "standart-lib-rest-api/http"
+	"github.com/mfturkcanoglu/go-mux-clean/controllers"
+	"github.com/mfturkcanoglu/go-mux-clean/database"
+	router "github.com/mfturkcanoglu/go-mux-clean/http"
 )
 
 var (

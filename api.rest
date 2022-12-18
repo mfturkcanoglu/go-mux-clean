@@ -1,0 +1,41 @@
+@host = localhost:8080
+
+// Create Product
+POST http://{{host}}/products HTTP/1.1
+content-type: application/json
+    
+{
+    "name": "test-product-3",
+    "description": "random-description-2",
+    "price": 105.00
+}
+
+###
+
+// Get Product By ID
+GET http://{{host}}/products/11 HTTP/1.1
+content-type: application/json
+
+###
+
+// Get All Products
+GET http://{{host}}/products/ HTTP/1.1
+content-type: application/json
+
+###
+
+// Update Product
+PATCH  http://{{host}}/products/8 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "updated-product",
+    "description": "random-description-updated",
+    "price": 100.00
+}
+
+###
+
+// Delete Product
+DELETE http://{{host}}/products/14 HTTP/1.1
+content-type: application/json

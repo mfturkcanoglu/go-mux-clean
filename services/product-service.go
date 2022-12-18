@@ -4,6 +4,8 @@ import (
 	"standart-lib-rest-api/entities"
 	"standart-lib-rest-api/repositories"
 	"strconv"
+
+	"github.com/go-playground/validator/v10"
 )
 
 type ProductService interface {
@@ -33,15 +35,26 @@ func (productService) GetByID(id string) (entities.Product, error) {
 }
 
 func (productService) Create(product entities.Product) (entities.Product, error) {
+	if err := Validate(product); err != nil {
+		return product, err
+	}
 	return productRepository.Save(product)
 }
 
 func (productService) Update(id string, newProduct entities.Product) (entities.Product, error) {
+	if err := Validate(newProduct); err != nil {
+		return newProduct, err
+	}
 	return productRepository.Update(convertStringToUnit(id), newProduct)
 }
 
 func (productService) Delete(id string) (bool, error) {
 	return productRepository.Delete(convertStringToUnit(id))
+}
+
+func Validate(product entities.Product) error {
+	validate := validator.New()
+	return validate.Struct(product)
 }
 
 func convertStringToUnit(str string) uint {

@@ -41,7 +41,7 @@ func (productController) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	product, err = productService.Create(product)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	json.NewEncoder(w).Encode(product)
@@ -76,7 +76,6 @@ func (productController) DeleteProduct(w http.ResponseWriter, r *http.Request) {
 	result, err := productService.Delete(id)
 	if err != nil {
 		log.Println(err)
-
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -95,7 +94,7 @@ func (productController) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 	newProduct, err = productService.Update(mux.Vars(r)["id"], newProduct)
 	if err != nil {
 		log.Println(err)
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 	json.NewEncoder(w).Encode(newProduct)

@@ -3,6 +3,7 @@ package services
 import (
 	"strconv"
 
+	"github.com/mfturkcanoglu/go-mux-clean/cache"
 	"github.com/mfturkcanoglu/go-mux-clean/entities"
 	"github.com/mfturkcanoglu/go-mux-clean/repositories"
 
@@ -25,6 +26,7 @@ func NewProductService() ProductService {
 
 var (
 	productRepository repositories.ProductRepository = repositories.NewProductRepository()
+	productCache      cache.ProductCache             = cache.NewRedisCache("localhost:6379", 0, 30)
 )
 
 func (productService) GetAll() ([]entities.Product, error) {
@@ -32,7 +34,12 @@ func (productService) GetAll() ([]entities.Product, error) {
 }
 
 func (productService) GetByID(id string) (entities.Product, error) {
-	return productRepository.FindByID(convertStringToUnit(id))
+	if product := productCache.Get(id); product != nil {
+		return *product, nil
+	}
+	product, err := productRepository.FindByID(convertStringToUnit(id))
+	productCache.Set(id, &product)
+	return product, err
 }
 
 func (productService) Create(product entities.Product) (entities.Product, error) {

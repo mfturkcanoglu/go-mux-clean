@@ -1,3 +1,17 @@
+// Package Product API
+//
+// Schemes: http, https
+// Host: localhost
+// BasePath: v2
+// Version: 0.0.1
+//
+// Consumes:
+//   - application/json
+//
+// Produces:
+// - application/json
+//
+//swagger:meta
 package controllers
 
 import (
@@ -30,6 +44,23 @@ var (
 	productService services.ProductService = services.NewProductService()
 )
 
+// temp
+// swagger:response
+type badRequest struct{}
+
+// swagger:route GET /products products saveProduct
+//
+// This will show all available products by default.
+//
+//	Consumes:
+//	- application/json
+//
+//	Produces:
+//	- application/json
+//
+//	Responses:
+//	200: productModel
+//	400: badRequest
 func (productController) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	var product entities.Product

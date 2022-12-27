@@ -1,0 +1,64 @@
+consumes:
+    - application/json
+host: localhost
+info:
+    title: Product API
+    description: Package Product API
+    version: 0.0.1
+paths:
+    /products:
+        get:
+            consumes:
+                - application/json
+            operationId: saveProduct
+            produces:
+                - application/json
+            responses:
+                "200":
+                    $ref: '#/responses/productModel'
+                "400":
+                    $ref: '#/responses/badRequest'
+            summary: This will show all available products by default.
+            tags:
+                - products
+produces:
+    - application/json
+responses:
+    badRequest:
+        description: temp
+    productModel:
+        description: Product structure
+        headers:
+            description:
+                description: |-
+                    the name for this product
+                    required: true
+                maxLength: 50
+                minLength: 10
+                type: string
+            id:
+                description: |-
+                    the id for this product
+
+                    required: true
+                format: uint64
+                minimum: 1
+                type: integer
+            name:
+                description: |-
+                    the name for this product
+                    required: true
+                maxLength: 20
+                minLength: 5
+                type: string
+            price:
+                description: |-
+                    the price of this product
+                    required: true
+                format: double
+                minimum: 5
+                type: number
+schemes:
+    - http
+    - https
+swagger: "2.0"
